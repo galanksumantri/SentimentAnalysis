@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sentimen Analysis</title>
+</head>
+<body>
+	<h1>Sentimen Analysis</h1>
+	<form action="/sentimen" method="POST">
+		<label for="sentence">Sentence:</label>
+		<input type="text" id="sentence" name="sentence"><br><br>
+		<input type="submit" value="Submit">
+	</form>
+
+	{% if predict %}
+		<h3>Sentiment: {{ predict }}</h3>
+		<h3>Probability: {{ probability }}</h3>
+	{% endif %}
+</body>
+</html>
