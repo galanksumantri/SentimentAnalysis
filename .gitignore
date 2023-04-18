@@ -1,2 +1,5 @@
 env/
 model/
+.vscode/
+node_modules/
+dist/

@@ -31,4 +31,4 @@ def word_similarity():
     return render_template('index.html', predict=predict[0], probability=probability[0])
 
 if __name__ == '__main__': 
-    app.run()
+    app.run(debug=True)
