@@ -9,9 +9,9 @@
 	<nav class="flex justify-between items-center bg-blue-500 text-white py-4 px-8">
 		<a href="#" class="text-2xl font-bold">Galang</a>
 		<div class="flex items-center">
-		<a href="#" class="mr-6">Tentang Kami</a>
+		<a href="#" class="mr-6">Tentang Saya</a>
 		<a href="#" class="mr-6">Kontak</a>
-		<button class="bg-white text-blue-500 py-2 px-6 rounded-full font-semibold hover:bg-blue-100">Masuk</button>
+		<!-- <button class="bg-white text-blue-500 py-2 px-6 rounded-full font-semibold hover:bg-blue-100">Masuk</button> -->
 		</div>
 	</nav>
 
@@ -29,12 +29,32 @@
 		</div>
 		<div class="flex-1">
 			<p class="text-xl font-bold mb-4">Hasil Analisis:</p>
-			<div class="bg-white relative border border-gray-300 rounded-lg w-full h-64 p-4">
+			<div class="bg-white relative border border-gray-300 rounded-lg w-full h-64 p-4 overflow-y-auto">
 			<p class="text-gray-500 text-center">Tidak ada hasil yang ditampilkan.</p>
-			{% if predict %}
-			<div class="absolute top-4 bg-white w-11/12">
-				<p>Sentiment: {{ predict }}</p>
-				<p>Probability: {{ probability }}</p>
+			{% if sentence %}
+			<div class="absolute top-4 bg-white w-11/12 max-h-fit">
+				<table>
+					<tr class="align-top">
+						<td>Kalimat</td>
+						<td>:</td>
+						<td>{{ sentence }}</td>
+					</tr>
+					<tr>
+						<td>Sentimen</td>
+						<td>:</td>
+						{% if predict == 'Positif' %}
+						<td class="text-green-400 font-bold">{{ predict }}</td>
+						{% endif %}
+						{% if predict == 'Negatif' %}
+						<td class="text-red-400 font-bold">{{ predict }}</td>
+						{% endif %}
+					</tr>
+					<tr>
+						<td>Probability</td>
+						<td>:</td>
+						<td>{{ probability }}</td>
+					</tr>
+				</table>
 			</div>
 			{% endif %}
 			</div>
