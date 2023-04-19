@@ -2,19 +2,51 @@
 <html>
 <head>
 	<title>Sentimen Analysis</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/dist/output.css')}}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='/css/dist/output.css')}} ">
 </head>
-<body>
-	<h1>Sentimen Analysis</h1>
-	<form action="/sentimen" method="POST">
-		<label for="sentence">Sentence:</label>
-		<input type="text" id="sentence" name="sentence"><br><br>
-		<input type="submit" value="Submit">
-	</form>
+<body class="bg-gray-100">
+	<!-- Navigation Bar -->
+	<nav class="flex justify-between items-center bg-blue-500 text-white py-4 px-8">
+		<a href="#" class="text-2xl font-bold">Galang</a>
+		<div class="flex items-center">
+		<a href="#" class="mr-6">Tentang Kami</a>
+		<a href="#" class="mr-6">Kontak</a>
+		<button class="bg-white text-blue-500 py-2 px-6 rounded-full font-semibold hover:bg-blue-100">Masuk</button>
+		</div>
+	</nav>
 
-	{% if predict %}
-		<h3>Sentiment: {{ predict }}</h3>
-		<h3>Probability: {{ probability }}</h3>
-	{% endif %}
+	<!-- Main Content -->
+	<div class="max-w-4xl mx-auto px-8 py-16">
+		<h1 class="text-4xl font-bold mb-8">Analisis Sentimen terkait Timnas Indonesia</h1>
+
+		<div class="flex flex-col md:flex-row gap-8">
+		<div class="flex-1">
+			<p class="text-xl font-bold mb-4">Masukkan Teks:</p>
+			<form method="POST" action="/sentimen">
+			<textarea class="border border-gray-300 rounded-lg w-full h-64 p-4" placeholder="Ketikkan teks di sini..." name="sentence"></textarea>
+			<button class="bg-blue-500 text-white py-2 px-6 rounded-lg font-semibold hover:bg-blue-600 mt-4" type="submit" formmethod="post">Analisis</button>
+			</form>
+		</div>
+		<div class="flex-1">
+			<p class="text-xl font-bold mb-4">Hasil Analisis:</p>
+			<div class="bg-white relative border border-gray-300 rounded-lg w-full h-64 p-4">
+			<p class="text-gray-500 text-center">Tidak ada hasil yang ditampilkan.</p>
+			{% if predict %}
+			<div class="absolute top-4 bg-white w-11/12">
+				<p>Sentiment: {{ predict }}</p>
+				<p>Probability: {{ probability }}</p>
+			</div>
+			{% endif %}
+			</div>
+		</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<footer class="bg-gray-200 py-8">
+		<div class="max-w-4xl mx-auto px-8">
+		<p class="text-center text-gray-500">&copy; 2023 Sentimen Analisis</p>
+		</div>
+	</footer>
 </body>
 </html>
