@@ -2,6 +2,10 @@ from flask import Flask, request, render_template
 from gensim.models import Word2Vec
 from utils.preprocessing import *
 from utils.get_vector import *
+import matplotlib.pyplot as plt
+import matplotlib
+import io
+import base64
 import pandas as pd
 import numpy as np
 import joblib
@@ -45,7 +49,22 @@ def upload_file():
     predict = model_svm.predict(vector)
     df['Label'] = predict
     
-    return df.to_html()
+    sentiment_counts = df['Label'].value_counts()
+
+    matplotlib.use('Agg')
+    fig, ax = plt.subplots(figsize=(4, 3))
+    fig.patch.set_facecolor('none')
+    ax.pie(sentiment_counts, labels=sentiment_counts.index, autopct='%1.1f%%', startangle=90)
+    ax.axis('equal')
+    plt.title('Analisis Sentimen')
+
+    # Convert chart to base64 string
+    buffer = io.BytesIO()
+    plt.savefig(buffer, format='png')
+    buffer.seek(0)
+    chart_data = base64.b64encode(buffer.read()).decode()
+
+    return render_template('hasil_analisis.html',df=df, chart_data=chart_data)
 
 if __name__ == '__main__': 
     app.run(debug=True)
