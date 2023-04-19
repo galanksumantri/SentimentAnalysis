@@ -26,5 +26,26 @@ def word_similarity():
     probability = [proba[1] if predict[0] == 'Positif' else proba[0]]
     return render_template('index.html', predict=predict[0], probability=probability[0], sentence=SENTENCE)
 
+@app.route('/sentimen_file')
+def sentimen_file():
+    return render_template('sentimen_file.html')
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    file = request.files['file']
+    if file.filename.endswith('.xlsx'):
+        df = pd.read_excel(file)
+    elif file.filename.endswith('.csv'):
+        df = pd.read_csv(file)
+    else:
+        return "Jenis file tidak didukung."
+
+    df['Text_clean'] = df['Text'].apply(caseFolding).apply(filtering).apply(convert_slang, kamus_slang=kamus_slang)
+    vector = [vector_w2v(sentence, model_w2v) for sentence in df['Text_clean']]
+    predict = model_svm.predict(vector)
+    df['Label'] = predict
+    
+    return df.to_html()
+
 if __name__ == '__main__': 
     app.run(debug=True)
