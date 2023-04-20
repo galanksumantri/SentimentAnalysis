@@ -16,3 +16,7 @@
 .hidden {
     display: none;
 }
+
+.greenarea {
+    background-color: rgb(219, 255, 225);
+}

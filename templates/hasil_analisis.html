@@ -25,11 +25,11 @@
 
     <!-- Tabel -->
     <div class="container mx-auto mt-4 overflow-x-auto">
-        <table class="table-auto" width="100%">
+        <table class="table-auto border border-gray-400" width="100%">
             <thead>
                 <tr>
                 {% for col in df.columns %}
-                <th class="px-4 py-2">{{ col }}</th>
+                <th class="border border-gray-400 px-4 py-2">{{ col }}</th>
                 {% endfor %}
                 </tr>
             </thead>
@@ -37,7 +37,7 @@
                 {% for _, row in df.iterrows() %}
                 <tr>
                 {% for _, value in row.items() %}
-                <td class="border px-4 py-2">{{ value }}</td>
+                <td class="border border-gray-400 px-4 py-2">{{ value }}</td>
                 {% endfor %}
                 </tr>
                 {% endfor %}
