@@ -64,4 +64,4 @@ def upload_file():
     return render_template('hasil_analisis.html',df=df, chart_data=chart_data)
 
 if __name__ == '__main__': 
-    app.run(debug=True)
+    app.run()
