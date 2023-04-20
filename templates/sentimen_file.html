@@ -1,56 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Sentimen Analysis</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='/css/dist/output.css')}} ">
-</head>
-<body class="bg-gray-100">
+{% extends "base.html" %}
 
-	<!-- Navigation Bar -->
-	<nav class="flex justify-between items-center bg-blue-500 text-white py-4 px-8">
-		<a href="{{ url_for('index') }}" class="text-2xl font-bold">Galang</a>
-		<div class="flex items-center">
-			<a href="{{ url_for('sentimen_file') }}" class="mr-6">Sentimen File</a>
-			<a href="#" class="mr-6">Tentang Saya</a>
-		</div>
-	</nav>
+{% block content %}
+<!-- Main Content -->
+<div class="max-w-4xl mx-auto px-8 py-16">
+	<h1 class="text-4xl font-bold mb-8 text-center">Analisis Sentimen terkait Timnas Indonesia</h1>
+</div>
 
-	<!-- Main Content -->
-	<div class="max-w-4xl mx-auto px-8 py-16">
-		<h1 class="text-4xl font-bold mb-8 text-center">Analisis Sentimen terkait Timnas Indonesia</h1>
-	</div>
-
-	<!-- Drag and Drop -->
-	<div class="rounded-lg shadow-lg px-20 pb-20">
-		<form action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data" class="flex flex-col space-y-2">
-		  <div class="dropzone relative border-2 border-dashed border-gray-400 rounded-lg h-48 flex justify-center items-center">
-			<div class="droparea absolute inset-0 bg-white flex flex-col items-center justify-center">
-				<div class="dropzone-hint flex flex-col items-center justify-center">
-					<p class="text-lg font-medium text-gray-400">Drag and drop your file here</p>
-					<p class="text-md text-gray-400">or click to select a file</p><br>
-					<p class="text-sm text-gray-400">Note: File must be contains text with column name is "Text"</p>
-				</div>
-				<div class="filename mt-2 text-sm text-gray-500"></div>
+<!-- Drag and Drop -->
+<div class="rounded-lg shadow-lg px-20 pb-20">
+	<form action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data" class="flex flex-col space-y-2">
+		<div class="dropzone relative border-2 border-dashed border-gray-400 rounded-lg h-48 flex justify-center items-center">
+		<div class="droparea absolute inset-0 bg-white flex flex-col items-center justify-center">
+			<div class="dropzone-hint flex flex-col items-center justify-center">
+				<p class="text-lg font-medium text-gray-400">Drag and drop your file here</p>
+				<p class="text-md text-gray-400">or click to select a file</p><br>
+				<p class="text-sm text-gray-400">Note: File must be contains text with column name is "Text"</p>
 			</div>
-			<input type="file" name="file" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
-		  </div>
-		  <div class="flex justify-center items-center space-x-4 pt-10">
-			<button type="submit" class="px-8 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Analisis</button>
-		  </div>
-		</form>
-	</div>
-
-	<!-- Footer -->
-	<footer class="bg-gray-200 py-8">
-		<div class="max-w-4xl mx-auto px-8">
-			<p class="text-center text-gray-500">&copy; 2023 Skripsi Galang</p>
+			<div class="filename mt-2 text-sm text-gray-500"></div>
 		</div>
-	</footer>
+		<input type="file" name="file" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+		</div>
+		<div class="flex justify-center items-center space-x-4 pt-10">
+		<button type="submit" class="px-8 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Analisis</button>
+		</div>
+	</form>
+</div>
 
-    <script src="{{ url_for('static', filename='js/dropzone.js') }}"></script>
-
-</body>
-</html>
+<script src="{{ url_for('static', filename='js/dropzone.js') }}"></script>
+{% endblock %}
