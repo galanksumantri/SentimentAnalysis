@@ -3,12 +3,9 @@ from gensim.models import Word2Vec
 from utils.preprocessing import *
 from utils.get_vector import *
 import matplotlib.pyplot as plt
-import matplotlib
-import io
-import base64
+import matplotlib, io, base64, joblib
 import pandas as pd
 import numpy as np
-import joblib
 
 model_svm = joblib.load('D:\KULIAH\Semester 8\Skripsi\Deploy Model\model\machine_learning\svm_w2v_skipgram.joblib')
 model_w2v = Word2Vec.load('D:\KULIAH\Semester 8\Skripsi\Deploy Model\model\word_embeddings\w2v_skipgram.model')
