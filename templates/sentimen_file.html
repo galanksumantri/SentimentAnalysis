@@ -3,25 +3,28 @@
 {% block content %}
 <!-- Main Content -->
 <div class="max-w-4xl mx-auto px-8 py-16">
-	<h1 class="text-4xl font-bold mb-8 text-center">Analisis Sentimen terkait Timnas Indonesia</h1>
+	<h1 class="text-4xl font-bold text-center">Analisis Sentimen terkait Timnas Indonesia</h1>
 </div>
 
 <!-- Drag and Drop -->
-<div class="rounded-lg shadow-lg px-20 pb-20">
+<div class="rounded-lg shadow-lg px-[20%] pb-20">
+	<h2 class="text-2xl font-bold mb-2 text-center">Support File .xlsx and .csv Only</h2>
 	<form action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data" class="flex flex-col space-y-2">
-		<div class="dropzone relative border-2 border-dashed border-gray-400 rounded-lg h-48 flex justify-center items-center">
-		<div class="droparea absolute inset-0 bg-white flex flex-col items-center justify-center">
-			<div class="dropzone-hint flex flex-col items-center justify-center">
-				<p class="text-lg font-medium text-gray-400">Drag and drop your file here</p>
-				<p class="text-md text-gray-400">or click to select a file</p><br>
-				<p class="text-sm text-gray-400">Note: File must be contains text with column name is "Text"</p>
+		<div class="dropzone relative border-2 border-dashed border-gray-300 rounded-lg h-48 flex justify-center items-center">
+			<div class="droparea absolute inset-0 bg-white flex flex-col items-center justify-center">
+				<div class="dropzone-hint flex flex-col items-center justify-center">
+					<p class="text-lg font-medium text-gray-400">Drag and drop your file here</p>
+					<p class="text-md text-gray-400">or click to select a file</p><br>
+					<p class="text-sm text-gray-400">Note: File must be contains text with column name is "Text"</p>
+				</div>
+				<div class="filename mt-2 text-sm text-gray-500"></div>
 			</div>
-			<div class="filename mt-2 text-sm text-gray-500"></div>
-		</div>
-		<input type="file" name="file" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+			<input type="file" name="file" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
 		</div>
 		<div class="flex justify-center items-center space-x-4 pt-10">
-		<button type="submit" class="px-8 py-2 bg-primary text-white rounded-lg hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-tertiary focus:ring-opacity-50">Analisis</button>
+			<button type="submit" class="px-8 py-2 bg-primary text-white rounded-lg hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-tertiary focus:ring-opacity-50">
+				Analisis
+			</button>
 		</div>
 	</form>
 </div>
