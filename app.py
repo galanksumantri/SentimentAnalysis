@@ -39,6 +39,8 @@ def upload_file():
 
     df['Label'], proba = pred(df, vector_w2v, model_w2v, model_svm)
     df['Proba Positif'] = [round(i[1],5) for i in proba]
+    df = df.drop_duplicates(subset='Text')
+    
     viz = viz_pie(df)
     return render_template('hasil_analisis.html',df=df, chart_data=viz)
 
