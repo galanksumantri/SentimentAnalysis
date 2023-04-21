@@ -1,13 +1,9 @@
 from flask import Flask, request, render_template
-from gensim.models import Word2Vec
 from utils.predict import pred
 from utils.get_vector import vector_w2v
 from utils.visualisasi import viz_pie
-import joblib
+from utils import model_svm, model_w2v
 import pandas as pd
-
-model_svm = joblib.load('D:\KULIAH\Semester 8\Skripsi\Deploy Model\model\machine_learning\svm_w2v_skipgram.joblib')
-model_w2v = Word2Vec.load('D:\KULIAH\Semester 8\Skripsi\Deploy Model\model\word_embeddings\w2v_skipgram.model')
 
 app = Flask(__name__)
 
@@ -40,7 +36,7 @@ def upload_file():
     df['Label'], proba = pred(df, vector_w2v, model_w2v, model_svm)
     df['Proba Positif'] = [round(i[1],5) for i in proba]
     df = df.drop_duplicates(subset='Text')
-    
+
     viz = viz_pie(df)
     return render_template('hasil_analisis.html',df=df, chart_data=viz)
 
