@@ -8,13 +8,13 @@
 		<div class="flex-1">
 			<p class="text-xl font-bold mb-4">Masukkan Teks:</p>
 			<form method="POST" action="/sentimen">
-				<textarea class="border border-gray-300 rounded-lg w-full h-64 p-4" placeholder="Ketikkan teks di sini..." name="sentence"></textarea>
-				<button class="bg-green-500 text-white py-2 px-6 rounded-lg font-semibold hover:bg-blue-600 mt-4" type="submit" formmethod="post">Analisis</button>
+				<textarea class="border border-gray-300 rounded-lg w-full h-60 p-4 mb-5" placeholder="Ketikkan teks di sini..." name="sentence"></textarea>
+				<button type="submit" class="px-8 py-2 bg-primary text-white rounded-lg hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-tertiary focus:ring-opacity-50">Analisis</button>
 			</form>
 		</div>
 	<div class="flex-1">
 		<p class="text-xl font-bold mb-4">Hasil Analisis:</p>
-		<div class="bg-white relative border border-gray-300 rounded-lg w-full h-64 p-4 overflow-y-auto">
+		<div class="bg-white relative border border-gray-300 rounded-lg w-full h-60 p-4 overflow-y-auto">
 			<p class="text-gray-500 text-center">Tidak ada hasil yang ditampilkan.</p>
 			{% if sentence %}
 			<div class="absolute top-4 bg-white w-11/12 max-h-fit">
