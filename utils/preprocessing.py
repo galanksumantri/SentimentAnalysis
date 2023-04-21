@@ -1,8 +1,6 @@
 import pandas as pd
 import re
 
-kamus_slang = pd.read_csv('https://raw.githubusercontent.com/nasalsabila/kamus-alay/master/colloquial-indonesian-lexicon.csv')
-
 def caseFolding(data):
   return data.lower()
 
